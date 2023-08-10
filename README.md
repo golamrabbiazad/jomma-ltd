@@ -35,8 +35,8 @@ docker exec -it oracle-xe sqlplus
 ### User creating
 
 ```sql
-CREATE USER C##JOMMA_ADMIN identified by "root6969R";
-GRANT CONNECT, RESOURCE, DBA TO  connect, resource, dba to C##JOMMA_ADMIN;
+CREATE USER C##JOMMA_ADMIN IDENTIFIED BY "root6969R";
+GRANT CONNECT, RESOURCE, DBA TO C##JOMMA_ADMIN;
 
 COMMIT;
 ```
@@ -46,7 +46,7 @@ Now, we're good to go with database operations.
 ### Structure of the repo
 
 - `jomma-fontend` which serves the fron-end part
-- `jomma-java-server` which uses Spring Boot
-- `jomma-node-server` this is for fun & challenging project with the same implemention of java project.
+- `jomma-java-server` which uses Spring Boot to serve APIs
+- `jomma-node-server` this is challenging & for fun
 
 - `docker-compose.yaml` for the spin-up the db.
