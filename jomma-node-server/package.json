@@ -1,0 +1,27 @@
+{
+  "name": "jomma-node-server",
+  "version": "1.0.0",
+  "description": "A backend server for jomma limited",
+  "scripts": {
+    "typeorm": "typeorm-ts-node-commonjs",
+    "seed:data": "ts-node db/seed.ts",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node build/src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "oracledb": "^6.0.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.17"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.4.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
