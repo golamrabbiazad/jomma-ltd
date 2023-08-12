@@ -4,10 +4,13 @@
 
 To run this server database configuration properties followed.
 
-```bash
-spring.datasource.url=jdbc:oracle:thin:@localhost:1521/xe
-spring.datasource.username=c##jomma_admin
-spring.datasource.password=root6969R
+```yaml
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: jomma_admin
+    password: root6969R
 ```
 
 ### Development
@@ -22,13 +25,13 @@ mvn spring-boot:run
 
 The server is running port <http://localhost:8080>
 
-### API End points
+### API Endpoints
 
 - `/api/v1/products` [GET]
 
 - `/api/v1/transactions` [POST]
 
-payload for transactions,
+the payload for transactions,
 
 ```json
 [
@@ -39,8 +42,8 @@ payload for transactions,
 ]
 ```
 
-- transaction_id will auto generated.
-- user_id is default to 1.
+- transaction_id will auto-generated.
+- user_id is defaulted to 1.
 - created_on is generated with LocalDateTime API.
 
 ### For Build the project

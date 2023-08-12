@@ -1,11 +1,13 @@
-version: '3.9'
+version: "3.9"
 
 services:
   oracle:
     container_name: oracle-xe
-    image: 'gvenzl/oracle-xe:latest'
+    image: "gvenzl/oracle-xe:latest"
     environment:
-      - ORACLE_PASSWORD=password
+      - "ORACLE_PASSWORD=password"
+      - "APP_USER=jomma_admin"
+      - "APP_USER_PASSWORD=root6969R"
     ports:
       - "1521:1521"
     restart: unless-stopped
