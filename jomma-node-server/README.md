@@ -25,10 +25,11 @@ To run this server database configuration properties followed to create the .env
 
 ```bash
 # ORACLE DATABASE CREDENTIALS
-DATABASE_HOST="localhost"
-DATABASE_PORT="1521"
-DATABASE_USERNAME="c##jomma_admin"
-DATABASE_PASSWORD="root6969R"
+DB_HOST="localhost"
+DB_NAME="XEPDB1"
+DB_PORT="1521"
+DB_USER="jomma_admin"
+DB_PASSWORD="root6969R"
 ```
 
 ### Development
@@ -47,20 +48,24 @@ The server is running port <http://localhost:8080>
 
 - `/api/v1/transactions` [POST]
 
-payload for transactions,
+the payload for transactions,
 
 ```json
 [
   {
-    "order_amount": 34.5,
-    "product_id": { "product_id": 1 }
+    "unit_price": 99.7,
+    "product_id": 3
+  },
+  {
+    "unit_price": 11.11,
+    "product_id": 1
   }
 ]
 ```
 
 - transaction_id will auto generated.
-- user_id is default to 1.
-- created_on is generated with LocalDateTime API.
+- user_id is defaulted to 1.
+- created_on is generated with `new Date()` API.
 
 ### For Build the project
 

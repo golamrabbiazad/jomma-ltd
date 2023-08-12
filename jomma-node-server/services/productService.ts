@@ -15,10 +15,11 @@ export const getProducts = async () => {
       return null;
     }
 
-    await connection.destroy();
     return products;
   } catch (error) {
     console.error("Error Occurred: ", error);
     throw new Error("Failed to retrieve products");
+  } finally {
+    await connection.destroy();
   }
 };

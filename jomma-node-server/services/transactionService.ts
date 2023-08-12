@@ -1,5 +1,5 @@
 import { AppDataSource } from "../db/data-source";
-import { Transaction } from "../model/entity";
+import { Product, Transaction } from "../model/entity";
 
 export const postTransactions = async (
   order_amount: number,
@@ -7,30 +7,42 @@ export const postTransactions = async (
 ) => {
   const connection = await AppDataSource.initialize();
   const transactionsRepository = connection.getRepository(Transaction);
+  const productRepository = connection.getRepository(Product);
 
   try {
-    await transactionsRepository.save({
-      order_amount,
-      product: { product_id },
-    });
+    const product = await productRepository.findOneBy({ product_id });
 
-    await connection.destroy();
+    if (!product) console.error("Please, provide a valid product id!");
+
+    if (product) {
+      await transactionsRepository.save({
+        user_id: 1,
+        order_amount,
+        product,
+        created_on: new Date(),
+      });
+    }
   } catch (error) {
     console.error("Error Occurred: ", error);
     throw new Error("Failed to save transaction");
+  } finally {
+    await connection.destroy();
   }
 };
 
 export const getTransactions = async () => {
   const connection = await AppDataSource.initialize();
-
   const transactionsRepository = connection.getRepository(Transaction);
 
-  const transactions = await transactionsRepository.find();
+  try {
+    const transactions = await transactionsRepository.find();
 
-  if (!transactions) console.error("Internal Error: Data are empty in DB!");
+    if (!transactions) console.error("Internal Error: Data are empty in DB!");
 
-  await connection.destroy();
-
-  return transactions;
+    return transactions;
+  } catch (error) {
+    console.error("Error Occurred: ", error);
+  } finally {
+    await connection.destroy();
+  }
 };
