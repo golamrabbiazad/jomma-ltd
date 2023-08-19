@@ -27,9 +27,9 @@ The server is running port <http://localhost:8080>
 
 ### API Endpoints
 
-- `/api/v1/products` [GET]
+- `/api/v1/products` [GET, POST]
 
-- `/api/v1/transactions` [POST]
+- `/api/v1/transactions` [GET, POST]
 
 the payload for transactions,
 
